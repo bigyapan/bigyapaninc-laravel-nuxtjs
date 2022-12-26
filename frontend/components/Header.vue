@@ -11,7 +11,7 @@
       <v-col cols="auto" class="mr-2">
         <v-btn-toggle :dark="isLogoLight" dense tile>
           <v-btn v-for="(locale,i) in availableLocales" :key="i" @click="changeLocale(locale)">
-            <img :src='"/images/language/"+locale.code+".png"' alt="" height="20"/>{{locale.name}}
+            <img :src='"/images/language/"+locale.code+".png"' alt="" height="20"/>{{ locale.name }}
           </v-btn>
         </v-btn-toggle>
       </v-col>
@@ -26,13 +26,15 @@
               :to="localePath(item.url)"
             >
               <v-icon left>{{ item.icon }}</v-icon>
-              <span>{{$t(item.title)}}</span>
+              <span>{{ $t(item.title) }}</span>
             </v-btn>
           </template>
         </v-menu>
       </v-col>
       <v-col cols="auto" class="header-action-area">
-        <v-btn color="accent" depressed rounded  x-large>Get a Free Quote <v-icon class="ml-4" large right>mdi-file-document</v-icon></v-btn>
+        <v-btn color="accent" depressed rounded x-large>Get a Free Quote
+          <v-icon class="ml-4" large right>mdi-file-document</v-icon>
+        </v-btn>
       </v-col>
     </v-row>
   </v-app-bar>
@@ -43,7 +45,7 @@ export default {
 
   data() {
     return {
-      locale:'en',
+      locale: 'en',
       isLogoLight: true,
       bg: 'transparent',
       headerItems: [
@@ -81,7 +83,7 @@ export default {
     }
   },
   computed: {
-    availableLocales () {
+    availableLocales() {
       return this.$i18n.locales;
     }
   },
@@ -99,7 +101,6 @@ export default {
       } else {
         this.bg = 'transparent';
         this.isLogoLight = true;
-
       }
     },
   },
@@ -113,7 +114,7 @@ export default {
 </script>
 
 <style lang="scss">
-.v-btn{
+.v-btn {
   text-transform: unset !important;
 }
 </style>

@@ -1,4 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
+import TerserPlugin from 'terser-webpack-plugin'
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -24,7 +25,7 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '~/plugins/vuelidate.js',
-    { src: '~/plugins/vuex-persist', ssr: false }
+    {src: '~/plugins/vuex-persist', ssr: false}
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -104,13 +105,13 @@ export default {
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: 'i18n_redirected',
-      redirectOn: 'root',  // recommended
+      redirectOn: 'root'  // recommended
     },
     locales: [{
       code: 'en',
       iso: 'en-US',
       file: 'en.json',
-      name: 'EN',
+      name: 'EN'
     }, {
       code: 'np',
       iso: 'np-NP',
@@ -123,8 +124,7 @@ export default {
     langDir: 'lang/',
     vueI18n: {
       fallbackLocale: 'en'
-    },
-
+    }
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -132,5 +132,14 @@ export default {
     extractCSS: true,
     extend(config, ctx) {
     },
-  },
+    optimization: {
+      minimize: true,
+      minimizer: [
+        new TerserPlugin({
+          cache: true,
+          parallel: false
+        })
+      ]
+    }
+  }
 }

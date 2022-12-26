@@ -1,12 +1,20 @@
 {
-  "name": "frontend",
+  "name": "bigyapaninc.com",
   "version": "1.0.0",
   "private": true,
+  "description": "Bigyapan Inc. Website",
   "scripts": {
-    "dev": "nuxt",
+    "dev": "nuxt --hostname bigyapaninc.com --port 45000",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate",
+    "deploy": "pm2 start npm --name bigyapaninc.com -- run start"
+  },
+  "config": {
+    "nuxt": {
+      "host": "0.0.0.0",
+      "port": "45000"
+    }
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
@@ -30,6 +38,7 @@
   },
   "devDependencies": {
     "@nuxt/types": "~2.15.0",
-    "@nuxtjs/vuetify": "^1.12.3"
+    "@nuxtjs/vuetify": "^1.12.3",
+    "terser-webpack-plugin": "^4.2.3"
   }
 }
