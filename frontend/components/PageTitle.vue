@@ -1,6 +1,5 @@
 <template>
     <div class="page-title-area" style="background-color: #0A1946">
-
       <v-container class="max-width-container" fluid>
         <v-row>
           <v-col lg="12">
